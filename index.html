@@ -49,6 +49,7 @@
   .cta {
     display: inline-block; margin-top: 2rem; color: var(--ink);
     border-bottom: 1px solid var(--ink); text-decoration: none; padding-bottom: 2px;
+    background: none; cursor: pointer; font: inherit;
   }
   .cta:hover { color: var(--accent); border-color: var(--accent); }
 
@@ -62,6 +63,10 @@
   .steps li:last-child { border-bottom: 1px solid var(--rule); }
   .steps b { font-weight: normal; color: var(--accent); }
 
+  .learn-block { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: center; margin-bottom: 4rem; }
+  .learn-block:nth-child(even) img { order: -1; }
+  .learn-block p { color: var(--muted); margin-top: 1rem; max-width: 52ch; }
+
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5vw; }
   .product img { margin-bottom: 1.2rem; }
   .product p { color: var(--muted); margin-top: 0.4rem; }
@@ -72,13 +77,47 @@
   .manifesto p b { color: var(--ink); font-weight: normal; }
 
   footer {
-    padding: 4rem 4vw; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    padding: 4rem 4vw; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem;
     color: var(--muted); border-top: 1px solid var(--rule);
   }
+  footer select {
+    background: var(--paper); color: var(--ink); border: 1px solid var(--rule);
+    font: inherit; padding: 0.3rem 0.6rem;
+  }
+
+  #chat-fab {
+    position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 50;
+    background: var(--ink); color: var(--paper); border: none; cursor: pointer;
+    font: inherit; padding: 0.8rem 1.4rem; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  #chat-fab:hover { background: var(--accent); }
+  #chat {
+    position: fixed; right: 1.5rem; bottom: 5rem; z-index: 50;
+    width: min(380px, calc(100vw - 3rem)); max-height: 70vh; overflow-y: auto;
+    background: var(--paper); border: 1px solid var(--ink); padding: 1.2rem;
+    display: none;
+  }
+  #chat.open { display: block; }
+  #chat h3 { margin-bottom: 0.6rem; }
+  #chat .log { margin: 0.8rem 0; }
+  #chat .log p { margin-bottom: 0.6rem; }
+  #chat .log img { margin: 0.6rem 0; border: 1px solid var(--rule); }
+  #chat input {
+    width: 100%; font: inherit; padding: 0.6rem; border: 1px solid var(--rule);
+    background: #fff; color: var(--ink);
+  }
+  #chat .row { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+  #chat button.draw {
+    font: inherit; cursor: pointer; border: 1px solid var(--ink);
+    background: var(--ink); color: var(--paper); padding: 0.6rem 1rem; white-space: nowrap;
+  }
+  #chat button.draw:hover { background: var(--accent); border-color: var(--accent); }
+  #chat .hint { color: var(--muted); font-size: 15px; }
 
   @media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 900px) {
-    .hero, .mechanism { grid-template-columns: 1fr; }
+    .hero, .mechanism, .learn-block { grid-template-columns: 1fr; }
+    .learn-block:nth-child(even) img { order: 0; }
     .grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 560px) {
@@ -92,114 +131,244 @@
 <nav>
   <div class="wordmark">Heisenbag <span>Shield</span></div>
   <div>
-    <a href="#how">How it works</a>
-    <a href="#carry">Carry</a>
-    <a href="#wear">Wear</a>
-    <a href="#space">Space</a>
-    <a href="#why">Why</a>
+    <a href="#how" data-i18n="nav_how">How it works</a>
+    <a href="#learn" data-i18n="nav_learn">Learn</a>
+    <a href="#carry" data-i18n="nav_carry">Carry</a>
+    <a href="#harness" data-i18n="nav_harness">Harness</a>
+    <a href="#wear" data-i18n="nav_wear">Wear</a>
+    <a href="#space" data-i18n="nav_space">Space</a>
+    <a href="#custom" data-i18n="nav_custom">Custom</a>
   </div>
 </nav>
 
 <header class="hero">
   <div>
-    <h1>There is too much flying around. We shut it out.</h1>
-    <p>Every Heisenbag Shield piece carries a full Faraday cage woven into the fabric. For your phone, your car, your studio, your home. Nothing to charge, nothing to switch on, no app to trust. Signal in: zero. Privacy out: total.</p>
-    <a class="cta" href="#carry">See the 21 pieces</a>
+    <h1 data-i18n="hero_h1">There is too much flying around. We shut it out.</h1>
+    <p data-i18n="hero_p">Handmade in Berlin, custom made for everyone. Every Heisenbag Shield piece carries a full Faraday cage woven into the fabric. For your phone, your car, your studio, your home. Nothing to charge, nothing to switch on, no app to trust.</p>
+    <a class="cta" href="#carry" data-i18n="hero_cta">See the 24 pieces</a>
   </div>
   <img src="img/hero.png" alt="Phone slipping into a Heisenbag Shield pouch, signal waves dissolving at the fabric">
 </header>
 
 <section id="how">
   <div class="section-head">
-    <h2>A metal cage, woven into cloth.</h2>
-    <p>The physics is 190 years old and unbeatable. We just made it wearable.</p>
+    <h2 data-i18n="how_h2">A metal cage, woven into cloth.</h2>
+    <p data-i18n="how_p">The physics is 190 years old and unbeatable. We just made it wearable.</p>
   </div>
   <div class="mechanism">
     <img src="img/mechanism.png" alt="Phone inside a woven metallic mesh, signal waves bouncing off">
     <ol class="steps">
-      <li><b>Radio waves are electricity in the air.</b> Every call, every GPS ping, every LTE packet is an electric field looking for your phone's antenna.</li>
-      <li><b>A conductive mesh eats electric fields.</b> The lining in every Shield product is a fine silver-metal weave. Incoming waves flow around it, never through it.</li>
-      <li><b>What can't get in can't track you.</b> No signal reaches the device, so the device reports nothing: no location, no tower handshake, no data.</li>
-      <li><b>No battery, no app, no off-switch to forget.</b> The cage works because of what it is, not what it does. It cannot be updated, hacked, or turned off.</li>
+      <li data-i18n="step1"><b>Radio waves are electricity in the air.</b> Every call, every GPS ping, every LTE packet is an electric field looking for your phone's antenna.</li>
+      <li data-i18n="step2"><b>A conductive mesh eats electric fields.</b> The lining in every Shield product is a fine silver-metal weave. Incoming waves flow around it, never through it.</li>
+      <li data-i18n="step3"><b>What can't get in can't track you.</b> No signal reaches the device, so the device reports nothing: no location, no tower handshake, no data.</li>
+      <li data-i18n="step4"><b>No battery, no app, no off-switch to forget.</b> The cage works because of what it is, not what it does. It cannot be updated, hacked, or turned off.</li>
     </ol>
+  </div>
+</section>
+
+<section id="learn">
+  <div class="section-head">
+    <h2 data-i18n="learn_h2">Learn the physics.</h2>
+    <p data-i18n="learn_p">Three ideas explain everything we make. Once you see them, you will never look at a phone the same way.</p>
+  </div>
+  <div class="learn-block">
+    <div>
+      <h3 data-i18n="learn1_h">1. Waves</h3>
+      <p data-i18n="learn1_p">Radio is light you cannot see. Both are the same thing: electric fields rippling through space. Your phone, your wifi, your GPS satellite, the sunlight on the table: one family of waves, different lengths. Nothing mystical, all measurable.</p>
+    </div>
+    <img src="img/learn-waves.png" alt="Radio waves traveling from an antenna toward a phone">
+  </div>
+  <div class="learn-block">
+    <div>
+      <h3 data-i18n="learn2_h">2. Light</h3>
+      <p data-i18n="learn2_p">A prism splits one beam into many colors because each wavelength bends differently. Wavelength decides everything: long waves pass through walls, short ones carry data. 5G, LTE and Bluetooth are just colors of radio, and like every color, a wall can stop them.</p>
+    </div>
+    <img src="img/learn-light.png" alt="A prism splitting a light beam into separate colors">
+  </div>
+  <div class="learn-block">
+    <div>
+      <h3 data-i18n="learn3_h">3. Transmission</h3>
+      <p data-i18n="learn3_p">Your phone and the tower shout at each other constantly, even when you sleep. That two-way shouting is how networks find you, price you and follow you. Wrap the phone in a conductive cage and the shout never arrives. Silence is not a setting. It is geometry.</p>
+    </div>
+    <img src="img/learn-transmission.png" alt="A phone and a cell tower exchanging signal arcs">
   </div>
 </section>
 
 <section id="carry">
   <div class="section-head">
-    <h2>Carry.</h2>
-    <p>Eight bags and pouches. Each closes over the cage completely, because a Faraday cage with a gap is just a bag.</p>
+    <h2 data-i18n="carry_h2">Carry.</h2>
+    <p data-i18n="carry_p">Eight bags and pouches, sewn by hand. Each closes over the cage completely, because a Faraday cage with a gap is just a bag.</p>
   </div>
   <div class="grid">
-    <div class="product"><img src="img/holster.png" alt="Shield Holster"><h3>Shield Holster</h3><p>Belt-worn. Phone drawn in one move, sealed in one fold.</p><p class="price">€ 140</p></div>
-    <div class="product"><img src="img/sling.png" alt="Shield Sling"><h3>Shield Sling</h3><p>Crossbody, high on the chest. Keys, card, phone: dark.</p><p class="price">€ 180</p></div>
-    <div class="product"><img src="img/tote.png" alt="Shield Tote"><h3>Shield Tote</h3><p>The daily carry. One pocket inside swallows the phone whole.</p><p class="price">€ 220</p></div>
-    <div class="product"><img src="img/sleeve.png" alt="Shield Sleeve"><h3>Shield Sleeve</h3><p>For tablet and laptop. Meetings without an audience.</p><p class="price">€ 190</p></div>
-    <div class="product"><img src="img/backpack.png" alt="Shield Backpack"><h3>Shield Backpack</h3><p>Roll-top, 20 litres. One cage pocket, dead zone guaranteed.</p><p class="price">€ 340</p></div>
-    <div class="product"><img src="img/weekender.png" alt="Shield Weekender"><h3>Shield Weekender</h3><p>Cabin-sized duffel. Border crossings without a data trail.</p><p class="price">€ 390</p></div>
-    <div class="product"><img src="img/keyfob.png" alt="Shield Key Pouch"><h3>Shield Key Pouch</h3><p>Drops your car key off the air. Relay thieves get silence.</p><p class="price">€ 60</p></div>
-    <div class="product"><img src="img/wallet.png" alt="Shield Wallet"><h3>Shield Wallet</h3><p>Cards and cash. NFC, RFID and skimmers locked out.</p><p class="price">€ 95</p></div>
+    <div class="product"><img src="img/holster.png" alt="Shield Holster"><h3>Shield Holster</h3><p data-i18n="p_holster">Belt-worn. Phone drawn in one move, sealed in one fold.</p><p class="price">€ 140</p></div>
+    <div class="product"><img src="img/sling.png" alt="Shield Sling"><h3>Shield Sling</h3><p data-i18n="p_sling">Crossbody, high on the chest. Keys, card, phone: dark.</p><p class="price">€ 180</p></div>
+    <div class="product"><img src="img/tote.png" alt="Shield Tote"><h3>Shield Tote</h3><p data-i18n="p_tote">The daily carry. One pocket inside swallows the phone whole.</p><p class="price">€ 220</p></div>
+    <div class="product"><img src="img/sleeve.png" alt="Shield Sleeve"><h3>Shield Sleeve</h3><p data-i18n="p_sleeve">For tablet and laptop. Meetings without an audience.</p><p class="price">€ 190</p></div>
+    <div class="product"><img src="img/backpack.png" alt="Shield Backpack"><h3>Shield Backpack</h3><p data-i18n="p_backpack">Roll-top, 20 litres. One cage pocket, dead zone guaranteed.</p><p class="price">€ 340</p></div>
+    <div class="product"><img src="img/weekender.png" alt="Shield Weekender"><h3>Shield Weekender</h3><p data-i18n="p_weekender">Cabin-sized duffel. Border crossings without a data trail.</p><p class="price">€ 390</p></div>
+    <div class="product"><img src="img/keyfob.png" alt="Shield Key Pouch"><h3>Shield Key Pouch</h3><p data-i18n="p_keyfob">Drops your car key off the air. Relay thieves get silence.</p><p class="price">€ 60</p></div>
+    <div class="product"><img src="img/wallet.png" alt="Shield Wallet"><h3>Shield Wallet</h3><p data-i18n="p_wallet">Cards and cash. NFC, RFID and skimmers locked out.</p><p class="price">€ 95</p></div>
+  </div>
+</section>
+
+<section id="harness">
+  <div class="section-head">
+    <h2 data-i18n="harness_h2">Harness.</h2>
+    <p data-i18n="harness_p">Worn, not carried. Three harnesses that keep the phone on your body and off the air until you decide otherwise.</p>
+  </div>
+  <div class="grid">
+    <div class="product"><img src="img/harness.png" alt="Shield Harness"><h3>Shield Harness</h3><p data-i18n="p_harness">Crossbody harness with caged pouch. Always at hand, never online.</p><p class="price">€ 120</p></div>
+    <div class="product"><img src="img/chestrig.png" alt="Shield Chest Rig"><h3>Shield Chest Rig</h3><p data-i18n="p_chestrig">Full front cage pocket, utility straps. The studio and stage rig.</p><p class="price">€ 210</p></div>
+    <div class="product"><img src="img/wriststrap.png" alt="Shield Wrist"><h3>Shield Wrist</h3><p data-i18n="p_wrist">Wrist strap with mini cage pocket. For keys, cards, one calm evening.</p><p class="price">€ 70</p></div>
   </div>
 </section>
 
 <section id="wear">
   <div class="section-head">
-    <h2>Wear.</h2>
-    <p>Five garments with the cage sewn into pocket, hood and hem. You wear them like anything else; they work like nothing else.</p>
+    <h2 data-i18n="wear_h2">Wear.</h2>
+    <p data-i18n="wear_p">Five garments with the cage sewn into pocket, hood and hem. You wear them like anything else; they work like nothing else.</p>
   </div>
   <div class="grid">
-    <div class="product"><img src="img/hoodie.png" alt="Shield Hoodie"><h3>Shield Hoodie</h3><p>Kangaroo pocket is a dead zone. Phone in, world out.</p><p class="price">€ 280</p></div>
-    <div class="product"><img src="img/parka.png" alt="Shield Parka"><h3>Shield Parka</h3><p>Deep caged pockets, storm-proof outside, signal-proof inside.</p><p class="price">€ 590</p></div>
-    <div class="product"><img src="img/cap.png" alt="Shield Cap"><h3>Shield Cap</h3><p>Six panels, one hidden pocket. The quiet cap.</p><p class="price">€ 110</p></div>
-    <div class="product"><img src="img/beanie.png" alt="Shield Beanie"><h3>Shield Beanie</h3><p>Knit outside, silver inside. Winter, untracked.</p><p class="price">€ 95</p></div>
-    <div class="product"><img src="img/scarf.png" alt="Shield Scarf"><h3>Shield Scarf</h3><p>Wraps the phone you forgot to switch off.</p><p class="price">€ 130</p></div>
+    <div class="product"><img src="img/hoodie.png" alt="Shield Hoodie"><h3>Shield Hoodie</h3><p data-i18n="p_hoodie">Kangaroo pocket is a dead zone. Phone in, world out.</p><p class="price">€ 280</p></div>
+    <div class="product"><img src="img/parka.png" alt="Shield Parka"><h3>Shield Parka</h3><p data-i18n="p_parka">Deep caged pockets, storm-proof outside, signal-proof inside.</p><p class="price">€ 590</p></div>
+    <div class="product"><img src="img/cap.png" alt="Shield Cap"><h3>Shield Cap</h3><p data-i18n="p_cap">Six panels, one hidden pocket. The quiet cap.</p><p class="price">€ 110</p></div>
+    <div class="product"><img src="img/beanie.png" alt="Shield Beanie"><h3>Shield Beanie</h3><p data-i18n="p_beanie">Knit outside, silver inside. Winter, untracked.</p><p class="price">€ 95</p></div>
+    <div class="product"><img src="img/scarf.png" alt="Shield Scarf"><h3>Shield Scarf</h3><p data-i18n="p_scarf">Wraps the phone you forgot to switch off.</p><p class="price">€ 130</p></div>
   </div>
 </section>
 
 <section id="space">
   <div class="section-head">
-    <h2>Space.</h2>
-    <p>Eight pieces for home, office and travel. From a curtain that blacks out a window to a tent where a conversation stays a conversation.</p>
+    <h2 data-i18n="space_h2">Space.</h2>
+    <p data-i18n="space_p">Eight pieces for home, office and travel. From a curtain that blacks out a window to a tent where a conversation stays a conversation.</p>
   </div>
   <div class="grid">
-    <div class="product"><img src="img/tent.png" alt="Shield Tent"><h3>Shield Tent</h3><p>Pop-up privacy room for two. Nothing in, nothing out.</p><p class="price">€ 1.900</p></div>
-    <div class="product"><img src="img/curtain.png" alt="Shield Curtain"><h3>Shield Curtain</h3><p>One panel, full length. The window stops listening.</p><p class="price">€ 260</p></div>
-    <div class="product"><img src="img/canopy.png" alt="Shield Canopy"><h3>Shield Canopy</h3><p>Crib canopy. The smallest sleeper, the quietest air.</p><p class="price">€ 240</p></div>
-    <div class="product"><img src="img/blanket.png" alt="Shield Blanket"><h3>Shield Blanket</h3><p>A throw for the sofa. Devices under it are gone.</p><p class="price">€ 170</p></div>
-    <div class="product"><img src="img/cone.png" alt="Shield Cone"><h3>Shield Cone</h3><p>Tabletop cone for meetings. Phones in, minds present.</p><p class="price">€ 150</p></div>
-    <div class="product"><img src="img/sleepbox.png" alt="Shield Sleep Box"><h3>Shield Sleep Box</h3><p>Bedside box. The phone sleeps before you do.</p><p class="price">€ 120</p></div>
-    <div class="product"><img src="img/keybox.png" alt="Shield Key Box"><h3>Shield Key Box</h3><p>Entryway box. Every key in the house, off the air.</p><p class="price">€ 99</p></div>
-    <div class="product"><img src="img/router.png" alt="Shield Router Cover"><h3>Shield Router Cover</h3><p>A cloche for the wifi. Night mode, enforced by physics.</p><p class="price">€ 80</p></div>
+    <div class="product"><img src="img/tent.png" alt="Shield Tent"><h3>Shield Tent</h3><p data-i18n="p_tent">Pop-up privacy room for two. Nothing in, nothing out.</p><p class="price">€ 1.900</p></div>
+    <div class="product"><img src="img/curtain.png" alt="Shield Curtain"><h3>Shield Curtain</h3><p data-i18n="p_curtain">One panel, full length. The window stops listening.</p><p class="price">€ 260</p></div>
+    <div class="product"><img src="img/canopy.png" alt="Shield Canopy"><h3>Shield Canopy</h3><p data-i18n="p_canopy">Crib canopy. The smallest sleeper, the quietest air.</p><p class="price">€ 240</p></div>
+    <div class="product"><img src="img/blanket.png" alt="Shield Blanket"><h3>Shield Blanket</h3><p data-i18n="p_blanket">A throw for the sofa. Devices under it are gone.</p><p class="price">€ 170</p></div>
+    <div class="product"><img src="img/cone.png" alt="Shield Cone"><h3>Shield Cone</h3><p data-i18n="p_cone">Tabletop cone for meetings. Phones in, minds present.</p><p class="price">€ 150</p></div>
+    <div class="product"><img src="img/sleepbox.png" alt="Shield Sleep Box"><h3>Shield Sleep Box</h3><p data-i18n="p_sleepbox">Bedside box. The phone sleeps before you do.</p><p class="price">€ 120</p></div>
+    <div class="product"><img src="img/keybox.png" alt="Shield Key Box"><h3>Shield Key Box</h3><p data-i18n="p_keybox">Entryway box. Every key in the house, off the air.</p><p class="price">€ 99</p></div>
+    <div class="product"><img src="img/router.png" alt="Shield Router Cover"><h3>Shield Router Cover</h3><p data-i18n="p_router">A cloche for the wifi. Night mode, enforced by physics.</p><p class="price">€ 80</p></div>
   </div>
 </section>
 
 <section id="custom">
   <div class="section-head">
-    <h2>Custom. We shield anything.</h2>
-    <p>The 21 pieces are the start. If it should be quiet inside, we build it: made to measure, sewn in Berlin, lined with certified shielding fabric.</p>
+    <h2 data-i18n="custom_h2">Custom. We shield anything.</h2>
+    <p data-i18n="custom_p">Every piece is handmade and custom made for you. Describe what should be quiet, we draw it in our style right here in the chat, and once you love the drawing, real people sew it and ship it worldwide.</p>
   </div>
   <div class="grid">
-    <div class="product"><img src="img/carcover.png" alt="Shield Car Cover"><h3>Car Cover</h3><p>Your car disappears from every network while it sleeps.</p><p class="price">from € 890</p></div>
-    <div class="product"><img src="img/studio.png" alt="Shield Studio"><h3>Studio &amp; Room Lining</h3><p>Recording studios, labs, meeting rooms. Walls that hold their breath.</p><p class="price">on request</p></div>
-    <div class="product"><img src="img/mechanism.png" alt="Research and health shielding"><h3>Research &amp; Health</h3><p>Measured attenuation for labs, clinics and anyone who needs certainty.</p><p class="price">on request</p></div>
-    <div class="product"><img src="img/curtain.png" alt="Custom sizes"><h3>Anything Else</h3><p>Curtains, covers, garments, enclosures. If you can describe it, we can shield it.</p><p class="price">on request</p></div>
+    <div class="product"><img src="img/carcover.png" alt="Shield Car Cover"><h3>Car Cover</h3><p data-i18n="p_carcover">Your car disappears from every network while it sleeps.</p><p class="price">from € 890</p></div>
+    <div class="product"><img src="img/studio.png" alt="Shield Studio"><h3>Studio &amp; Room Lining</h3><p data-i18n="p_studio">Recording studios, labs, meeting rooms. Walls that hold their breath.</p><p class="price" data-i18n="on_request1">on request</p></div>
+    <div class="product"><img src="img/mechanism.png" alt="Research and health shielding"><h3>Research &amp; Health</h3><p data-i18n="p_research">Measured attenuation for labs, clinics and anyone who needs certainty.</p><p class="price" data-i18n="on_request2">on request</p></div>
+    <div class="product"><img src="img/curtain.png" alt="Custom sizes"><h3>Anything Else</h3><p data-i18n="p_anything">Curtains, covers, garments, enclosures. If you can describe it, we can shield it.</p><p class="price" data-i18n="on_request3">on request</p></div>
   </div>
-  <p style="margin-top:2.5rem"><a class="cta" href="mailto:hello@heisenbag.com">Describe what should be quiet</a></p>
+  <p style="margin-top:2.5rem"><button class="cta" id="open-chat" data-i18n="custom_cta">Draw your own piece</button></p>
 </section>
 
 <section id="why">
   <div class="manifesto">
-    <h2>Everyone is reachable. Almost no one chooses when.</h2>
-    <p>Your phone talks to towers, satellites, beacons and apps around the clock. It does this <b>in your pocket, on your nightstand, in your meetings</b>. Airplane mode is a promise from the same companies that monetize your location. A Faraday cage is not a promise. It is physics.</p>
-    <p>Every Shield piece is lined with silver-plated polyamide fabric woven in Germany, attenuating 60 dB and more from 200 MHz to 14 GHz: 5G, LTE, GPS, wifi, Bluetooth, NFC. Journalists crossing borders, lawyers in negotiations, executives before earnings, parents teaching kids what attention feels like: they all need one moment where the device is simply <b>not there</b>. Heisenbag Shield makes that moment as easy as closing a bag, wearing a hoodie, or stepping into a tent.</p>
-    <p>Uncertainty, by design.</p>
+    <h2 data-i18n="why_h2">Everyone is reachable. Almost no one chooses when.</h2>
+    <p data-i18n="why_p1">Your phone talks to towers, satellites, beacons and apps around the clock. It does this <b>in your pocket, on your nightstand, in your meetings</b>. Airplane mode is a promise from the same companies that monetize your location. A Faraday cage is not a promise. It is physics.</p>
+    <p data-i18n="why_p2">Every Shield piece is handmade, lined with silver-plated polyamide fabric woven in Germany, attenuating 60 dB and more from 200 MHz to 14 GHz: 5G, LTE, GPS, wifi, Bluetooth, NFC. Journalists crossing borders, lawyers in negotiations, recording artists, parents teaching kids what attention feels like: they all need one moment where the device is simply <b>not there</b>.</p>
+    <p data-i18n="why_p3">Uncertainty, by design.</p>
   </div>
 </section>
 
 <footer>
-  <div>HEISENBAG — Berlin</div>
-  <div>Shield collection, first drop soon.</div>
+  <div data-i18n="footer_l">HEISENBAG — Handmade in Berlin, shipped worldwide</div>
+  <select id="lang" aria-label="Language">
+    <option value="en">English</option><option value="de">Deutsch</option><option value="zh">中文</option>
+    <option value="hi">हिन्दी</option><option value="es">Español</option><option value="fr">Français</option>
+    <option value="ar">العربية</option><option value="bn">বাংলা</option><option value="pt">Português</option>
+    <option value="ru">Русский</option><option value="ur">اردو</option><option value="id">Indonesia</option>
+    <option value="ja">日本語</option><option value="sw">Kiswahili</option><option value="tr">Türkçe</option>
+    <option value="ko">한국어</option><option value="it">Italiano</option><option value="th">ไทย</option>
+    <option value="vi">Tiếng Việt</option><option value="pl">Polski</option><option value="fa">فارسی</option>
+  </select>
 </footer>
+
+<button id="chat-fab" data-i18n="chat_fab">Draw yours</button>
+<div id="chat" role="dialog" aria-label="Design chat">
+  <h3 data-i18n="chat_title">Describe your piece. We draw it.</h3>
+  <div class="log" id="chat-log"></div>
+  <input id="chat-in" data-i18n-ph="chat_ph" placeholder="A shielded guitar case, dark leather…" maxlength="400">
+  <div class="row">
+    <button class="draw" id="chat-go" data-i18n="chat_btn">Draw</button>
+  </div>
+  <p class="hint" data-i18n="chat_hint">The drawing is free. If you love it, we make it by hand and ship it worldwide.</p>
+</div>
+
+<script src="translations.js"></script>
+<script>
+(function () {
+  var RTL = { ar: 1, ur: 1, fa: 1 };
+  var EN = {};
+  document.querySelectorAll('[data-i18n]').forEach(function (el) { EN[el.dataset.i18n] = el.innerHTML; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { EN[el.dataset.i18nPh] = el.placeholder; });
+  window.I18N_EN = EN;
+
+  function apply(lang) {
+    var dict = (window.I18N && window.I18N[lang]) || EN;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var v = dict[el.dataset.i18n]; if (v) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
+      var v = dict[el.dataset.i18nPh]; if (v) el.placeholder = v;
+    });
+    document.documentElement.lang = lang;
+    document.documentElement.dir = RTL[lang] ? 'rtl' : 'ltr';
+    var sel = document.getElementById('lang'); if (sel) sel.value = lang;
+    try { localStorage.setItem('hb_lang', lang); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('hb_lang'); } catch (e) {}
+  var guess = (saved || (navigator.language || 'en')).slice(0, 2).toLowerCase();
+  if (!document.querySelector('#lang option[value="' + guess + '"]')) guess = 'en';
+  apply(guess);
+  document.getElementById('lang').addEventListener('change', function () { apply(this.value); });
+
+  var fab = document.getElementById('chat-fab'), chat = document.getElementById('chat'),
+      log = document.getElementById('chat-log'), inp = document.getElementById('chat-in'),
+      go = document.getElementById('chat-go');
+  function toggle() { chat.classList.toggle('open'); if (chat.classList.contains('open')) inp.focus(); }
+  fab.addEventListener('click', toggle);
+  document.getElementById('open-chat').addEventListener('click', function () { chat.classList.add('open'); inp.focus(); });
+
+  function say(html) { var p = document.createElement('p'); p.innerHTML = html; log.appendChild(p); return p; }
+  function draw() {
+    var q = inp.value.trim(); if (!q) return;
+    say('').textContent = q;
+    inp.value = ''; go.disabled = true;
+    var waitMsg = say((window.I18N_EN && dict_now('chat_wait')) || 'Drawing, one moment…');
+    fetch('/api/draw', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: q })
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      waitMsg.remove();
+      if (!d.url) throw 0;
+      var im = document.createElement('img'); im.src = d.url; im.alt = q; log.appendChild(im);
+      var a = document.createElement('a');
+      a.className = 'cta'; a.target = '_blank';
+      a.href = 'mailto:hello@heisenbag.com?subject=' + encodeURIComponent('Custom piece: ' + q) +
+               '&body=' + encodeURIComponent('My drawing: ' + d.url + '\n\n' + q);
+      a.textContent = dict_now('chat_order') || 'Order this piece';
+      log.appendChild(a);
+      chat.scrollTop = chat.scrollHeight;
+    }).catch(function () {
+      waitMsg.textContent = dict_now('chat_fail') || 'Drawing failed, try again.';
+    }).finally(function () { go.disabled = false; });
+  }
+  function dict_now(k) {
+    var lang = document.documentElement.lang;
+    return (window.I18N && window.I18N[lang] && window.I18N[lang][k]) || window.I18N_EN[k];
+  }
+  go.addEventListener('click', draw);
+  inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') draw(); });
+})();
+</script>
 
 </body>
 </html>

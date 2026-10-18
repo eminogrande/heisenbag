@@ -23,4 +23,11 @@
 1. Email Statex (service@statex.de): samples of Berlin RS + Bremen RS, price list at 50 m / 200 m, ask about tent OEM.
 2. Order 1 m samples of both + one NiCu ripstop sample from Amazon (Amradield, ~€20) for a side-by-side phone test.
 3. Test protocol: phone in wrapped fabric → call it, check GPS (maps app), wifi, BT, NFC. 3 layers of closures (fold-over) = real-world seal.
-4. YSHIELD (yshield.com, DE) as backup fabric + paint/wallpaper supplier for a future Shield Room line.
+4. YSHIELD (yshield.com, DE) as backup fabric + paint/wallpaper supplier for a future Shield Room line. YSHIELD STEEL-GRAY €22.35/m² (42 dB, washable 60°C) is the cheap EU workhorse for bags/clothing; SILVER-TWIN €84/m hits 60 dB.
+
+## Market check (18.10.2026)
+
+- AliExpress/Temu faraday pouches: $2.27–25 (90 dB claims, PU leather, mass market, zero brand). We are 10–30x more expensive: handmade, Berlin, fashion. Correct position — do not fight price.
+- Cheapest fabric found: NiCu taffeta $2.10–2.71/m (110 cm, 70–95 dB, CN suppliers, MOQ from 1 m samples to 100 m² volume). At €2.30/m² the lining of a €140 holster costs ≈ €1 — fabric is not the cost driver, Berlin labor is. Price = 3 × production cost holds.
+- xouxou (the style reference): phone necklaces €40–90, no shielding at all. We add physics for +€60–90 per piece.
+- Evol Ibiza: no verifiable brand found under that name (evol-italy.com is an unrelated Italian bag maker; EVOL trademark 87056377 lapsed). Name is likely free to use for the harness line — trademark check before printing labels.

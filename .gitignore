@@ -1,3 +1,7 @@
 _contact*
 preview.*
 .DS_Store
+.worktrees/
+.worktrees/
+_fixkeys.json
+merge-i18n.py
