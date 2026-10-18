@@ -85,34 +85,13 @@
     font: inherit; padding: 0.3rem 0.6rem;
   }
 
-  #chat-fab {
+  #contact-fab {
     position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 50;
-    background: var(--ink); color: var(--paper); border: none; cursor: pointer;
-    font: inherit; padding: 0.8rem 1.4rem; letter-spacing: 0.1em; text-transform: uppercase;
+    max-width: calc(100vw - 3rem);
+    background: var(--ink); color: var(--paper); text-decoration: none;
+    font: inherit; padding: 0.8rem 1.4rem;
   }
-  #chat-fab:hover { background: var(--accent); }
-  #chat {
-    position: fixed; right: 1.5rem; bottom: 5rem; z-index: 50;
-    width: min(380px, calc(100vw - 3rem)); max-height: 70vh; overflow-y: auto;
-    background: var(--paper); border: 1px solid var(--ink); padding: 1.2rem;
-    display: none;
-  }
-  #chat.open { display: block; }
-  #chat h3 { margin-bottom: 0.6rem; }
-  #chat .log { margin: 0.8rem 0; }
-  #chat .log p { margin-bottom: 0.6rem; }
-  #chat .log img { margin: 0.6rem 0; border: 1px solid var(--rule); }
-  #chat input {
-    width: 100%; font: inherit; padding: 0.6rem; border: 1px solid var(--rule);
-    background: #fff; color: var(--ink);
-  }
-  #chat .row { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
-  #chat button.draw {
-    font: inherit; cursor: pointer; border: 1px solid var(--ink);
-    background: var(--ink); color: var(--paper); padding: 0.6rem 1rem; white-space: nowrap;
-  }
-  #chat button.draw:hover { background: var(--accent); border-color: var(--accent); }
-  #chat .hint { color: var(--muted); font-size: 15px; }
+  #contact-fab:hover { background: var(--accent); }
 
   @media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 900px) {
@@ -132,12 +111,12 @@
   <div class="wordmark">Heisenbag <span>Shield</span></div>
   <div>
     <a href="#how" data-i18n="nav_how">How it works</a>
-    <a href="#learn" data-i18n="nav_learn">Learn</a>
     <a href="#carry" data-i18n="nav_carry">Carry</a>
     <a href="#harness" data-i18n="nav_harness">Harness</a>
     <a href="#wear" data-i18n="nav_wear">Wear</a>
     <a href="#space" data-i18n="nav_space">Space</a>
     <a href="#custom" data-i18n="nav_custom">Custom</a>
+    <a href="#learn" data-i18n="nav_learn">Learn</a>
   </div>
 </nav>
 
@@ -163,34 +142,6 @@
       <li data-i18n="step3"><b>What can't get in can't track you.</b> No signal reaches the device, so the device reports nothing: no location, no tower handshake, no data.</li>
       <li data-i18n="step4"><b>No battery, no app, no off-switch to forget.</b> The cage works because of what it is, not what it does. It cannot be updated, hacked, or turned off.</li>
     </ol>
-  </div>
-</section>
-
-<section id="learn">
-  <div class="section-head">
-    <h2 data-i18n="learn_h2">Learn the physics.</h2>
-    <p data-i18n="learn_p">Three ideas explain everything we make. Once you see them, you will never look at a phone the same way.</p>
-  </div>
-  <div class="learn-block">
-    <div>
-      <h3 data-i18n="learn1_h">1. Waves</h3>
-      <p data-i18n="learn1_p">Radio is light you cannot see. Both are the same thing: electric fields rippling through space. Your phone, your wifi, your GPS satellite, the sunlight on the table: one family of waves, different lengths. Nothing mystical, all measurable.</p>
-    </div>
-    <img src="img/learn-waves.png" alt="Radio waves traveling from an antenna toward a phone">
-  </div>
-  <div class="learn-block">
-    <div>
-      <h3 data-i18n="learn2_h">2. Light</h3>
-      <p data-i18n="learn2_p">A prism splits one beam into many colors because each wavelength bends differently. Wavelength decides everything: long waves pass through walls, short ones carry data. 5G, LTE and Bluetooth are just colors of radio, and like every color, a wall can stop them.</p>
-    </div>
-    <img src="img/learn-light.png" alt="A prism splitting a light beam into separate colors">
-  </div>
-  <div class="learn-block">
-    <div>
-      <h3 data-i18n="learn3_h">3. Transmission</h3>
-      <p data-i18n="learn3_p">Your phone and the tower shout at each other constantly, even when you sleep. That two-way shouting is how networks find you, price you and follow you. Wrap the phone in a conductive cage and the shout never arrives. Silence is not a setting. It is geometry.</p>
-    </div>
-    <img src="img/learn-transmission.png" alt="A phone and a cell tower exchanging signal arcs">
   </div>
 </section>
 
@@ -257,7 +208,7 @@
 <section id="custom">
   <div class="section-head">
     <h2 data-i18n="custom_h2">Custom. We shield anything.</h2>
-    <p data-i18n="custom_p">Every piece is handmade and custom made for you. Describe what should be quiet, we draw it in our style right here in the chat, and once you love the drawing, real people sew it and ship it worldwide.</p>
+    <p data-i18n="custom_p">Every piece is handmade and custom made for you. Email us to describe what you want.</p>
   </div>
   <div class="grid">
     <div class="product"><img src="img/carcover.png" alt="Shield Car Cover"><h3>Car Cover</h3><p data-i18n="p_carcover">Your car disappears from every network while it sleeps.</p><p class="price">from € 890</p></div>
@@ -265,7 +216,7 @@
     <div class="product"><img src="img/mechanism.png" alt="Research and health shielding"><h3>Research &amp; Health</h3><p data-i18n="p_research">Measured attenuation for labs, clinics and anyone who needs certainty.</p><p class="price" data-i18n="on_request2">on request</p></div>
     <div class="product"><img src="img/curtain.png" alt="Custom sizes"><h3>Anything Else</h3><p data-i18n="p_anything">Curtains, covers, garments, enclosures. If you can describe it, we can shield it.</p><p class="price" data-i18n="on_request3">on request</p></div>
   </div>
-  <p style="margin-top:2.5rem"><button class="cta" id="open-chat" data-i18n="custom_cta">Draw your own piece</button></p>
+  <p style="margin-top:2.5rem"><a class="cta" href="mailto:hello@heisenbag.com" data-i18n="custom_cta">Describe your piece</a></p>
 </section>
 
 <section id="why">
@@ -274,6 +225,34 @@
     <p data-i18n="why_p1">Your phone talks to towers, satellites, beacons and apps around the clock. It does this <b>in your pocket, on your nightstand, in your meetings</b>. Airplane mode is a promise from the same companies that monetize your location. A Faraday cage is not a promise. It is physics.</p>
     <p data-i18n="why_p2">Every Shield piece is handmade, lined with silver-plated polyamide fabric woven in Germany, attenuating 60 dB and more from 200 MHz to 14 GHz: 5G, LTE, GPS, wifi, Bluetooth, NFC. Journalists crossing borders, lawyers in negotiations, recording artists, parents teaching kids what attention feels like: they all need one moment where the device is simply <b>not there</b>.</p>
     <p data-i18n="why_p3">Uncertainty, by design.</p>
+  </div>
+</section>
+
+<section id="learn">
+  <div class="section-head">
+    <h2 data-i18n="learn_h2">Learn the physics.</h2>
+    <p data-i18n="learn_p">Three ideas explain everything we make. Once you see them, you will never look at a phone the same way.</p>
+  </div>
+  <div class="learn-block">
+    <div>
+      <h3 data-i18n="learn1_h">1. Waves</h3>
+      <p data-i18n="learn1_p">Radio is light you cannot see. Both are the same thing: electric fields rippling through space. Your phone, your wifi, your GPS satellite, the sunlight on the table: one family of waves, different lengths. Nothing mystical, all measurable.</p>
+    </div>
+    <img src="img/learn-waves.png" alt="Radio waves traveling from an antenna toward a phone">
+  </div>
+  <div class="learn-block">
+    <div>
+      <h3 data-i18n="learn2_h">2. Light</h3>
+      <p data-i18n="learn2_p">A prism splits one beam into many colors because each wavelength bends differently. Wavelength decides everything: long waves pass through walls, short ones carry data. 5G, LTE and Bluetooth are just colors of radio, and like every color, a wall can stop them.</p>
+    </div>
+    <img src="img/learn-light.png" alt="A prism splitting a light beam into separate colors">
+  </div>
+  <div class="learn-block">
+    <div>
+      <h3 data-i18n="learn3_h">3. Transmission</h3>
+      <p data-i18n="learn3_p">Your phone and the tower shout at each other constantly, even when you sleep. That two-way shouting is how networks find you, price you and follow you. Wrap the phone in a conductive cage and the shout never arrives. Silence is not a setting. It is geometry.</p>
+    </div>
+    <img src="img/learn-transmission.png" alt="A phone and a cell tower exchanging signal arcs">
   </div>
 </section>
 
@@ -290,16 +269,7 @@
   </select>
 </footer>
 
-<button id="chat-fab" data-i18n="chat_fab">Draw yours</button>
-<div id="chat" role="dialog" aria-label="Design chat">
-  <h3 data-i18n="chat_title">Describe your piece. We draw it.</h3>
-  <div class="log" id="chat-log"></div>
-  <input id="chat-in" data-i18n-ph="chat_ph" placeholder="A shielded guitar case, dark leather…" maxlength="400">
-  <div class="row">
-    <button class="draw" id="chat-go" data-i18n="chat_btn">Draw</button>
-  </div>
-  <p class="hint" data-i18n="chat_hint">The drawing is free. If you love it, we make it by hand and ship it worldwide.</p>
-</div>
+<a id="contact-fab" href="mailto:hello@heisenbag.com" data-i18n="custom_cta">Describe your piece</a>
 
 <script src="translations.js"></script>
 <script>
@@ -330,43 +300,6 @@
   apply(guess);
   document.getElementById('lang').addEventListener('change', function () { apply(this.value); });
 
-  var fab = document.getElementById('chat-fab'), chat = document.getElementById('chat'),
-      log = document.getElementById('chat-log'), inp = document.getElementById('chat-in'),
-      go = document.getElementById('chat-go');
-  function toggle() { chat.classList.toggle('open'); if (chat.classList.contains('open')) inp.focus(); }
-  fab.addEventListener('click', toggle);
-  document.getElementById('open-chat').addEventListener('click', function () { chat.classList.add('open'); inp.focus(); });
-
-  function say(html) { var p = document.createElement('p'); p.innerHTML = html; log.appendChild(p); return p; }
-  function draw() {
-    var q = inp.value.trim(); if (!q) return;
-    say('').textContent = q;
-    inp.value = ''; go.disabled = true;
-    var waitMsg = say((window.I18N_EN && dict_now('chat_wait')) || 'Drawing, one moment…');
-    fetch('/api/draw', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: q })
-    }).then(function (r) { return r.json(); }).then(function (d) {
-      waitMsg.remove();
-      if (!d.url) throw 0;
-      var im = document.createElement('img'); im.src = d.url; im.alt = q; log.appendChild(im);
-      var a = document.createElement('a');
-      a.className = 'cta'; a.target = '_blank';
-      a.href = 'mailto:hello@heisenbag.com?subject=' + encodeURIComponent('Custom piece: ' + q) +
-               '&body=' + encodeURIComponent('My drawing: ' + d.url + '\n\n' + q);
-      a.textContent = dict_now('chat_order') || 'Order this piece';
-      log.appendChild(a);
-      chat.scrollTop = chat.scrollHeight;
-    }).catch(function () {
-      waitMsg.textContent = dict_now('chat_fail') || 'Drawing failed, try again.';
-    }).finally(function () { go.disabled = false; });
-  }
-  function dict_now(k) {
-    var lang = document.documentElement.lang;
-    return (window.I18N && window.I18N[lang] && window.I18N[lang][k]) || window.I18N_EN[k];
-  }
-  go.addEventListener('click', draw);
-  inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') draw(); });
 })();
 </script>
 
