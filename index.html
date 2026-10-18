@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEISENBAG SHIELD — Clothing and rooms that make you unreachable</title>
+<style>
+  :root {
+    --paper: #FDF6E3;
+    --ink: #1a1a1a;
+    --muted: #6b6558;
+    --accent: #c1500a;
+    --rule: rgba(26,26,26,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { overflow-x: hidden; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+
+  nav {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 2rem 4vw; flex-wrap: wrap; gap: 0.8rem;
+  }
+  .wordmark { letter-spacing: 0.35em; text-transform: uppercase; }
+  .wordmark span { color: var(--accent); }
+  nav a { color: var(--ink); text-decoration: none; margin-left: 2rem; }
+  nav a:hover { color: var(--accent); }
+
+  h1, h2 {
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    font-weight: normal;
+    letter-spacing: -0.01em;
+  }
+  h3 { font-size: 17px; font-weight: normal; text-transform: uppercase; letter-spacing: 0.2em; }
+
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4vw;
+    align-items: center; padding: 4rem 4vw 6rem;
+  }
+  .hero p { max-width: 36ch; margin-top: 1.5rem; color: var(--muted); }
+  .cta {
+    display: inline-block; margin-top: 2rem; color: var(--ink);
+    border-bottom: 1px solid var(--ink); text-decoration: none; padding-bottom: 2px;
+  }
+  .cta:hover { color: var(--accent); border-color: var(--accent); }
+
+  section { padding: 5rem 4vw; border-top: 1px solid var(--rule); }
+  .section-head { max-width: 720px; margin-bottom: 3rem; }
+  .section-head p { margin-top: 1.2rem; color: var(--muted); max-width: 54ch; }
+
+  .mechanism { display: grid; grid-template-columns: 1fr 1fr; gap: 4vw; align-items: center; }
+  .steps { list-style: none; }
+  .steps li { padding: 1.1rem 0; border-top: 1px solid var(--rule); }
+  .steps li:last-child { border-bottom: 1px solid var(--rule); }
+  .steps b { font-weight: normal; color: var(--accent); }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5vw; }
+  .product img { margin-bottom: 1.2rem; }
+  .product p { color: var(--muted); margin-top: 0.4rem; }
+  .product .price { color: var(--ink); margin-top: 0.6rem; }
+
+  .manifesto { max-width: 720px; }
+  .manifesto p { margin-top: 1.4rem; color: var(--muted); }
+  .manifesto p b { color: var(--ink); font-weight: normal; }
+
+  footer {
+    padding: 4rem 4vw; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    color: var(--muted); border-top: 1px solid var(--rule);
+  }
+
+  @media (max-width: 1100px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 900px) {
+    .hero, .mechanism { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; }
+    nav a { margin-left: 0; margin-right: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wordmark">Heisenbag <span>Shield</span></div>
+  <div>
+    <a href="#how">How it works</a>
+    <a href="#carry">Carry</a>
+    <a href="#wear">Wear</a>
+    <a href="#space">Space</a>
+    <a href="#why">Why</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div>
+    <h1>There is too much flying around. We shut it out.</h1>
+    <p>Every Heisenbag Shield piece carries a full Faraday cage woven into the fabric. For your phone, your car, your studio, your home. Nothing to charge, nothing to switch on, no app to trust. Signal in: zero. Privacy out: total.</p>
+    <a class="cta" href="#carry">See the 21 pieces</a>
+  </div>
+  <img src="img/hero.png" alt="Phone slipping into a Heisenbag Shield pouch, signal waves dissolving at the fabric">
+</header>
+
+<section id="how">
+  <div class="section-head">
+    <h2>A metal cage, woven into cloth.</h2>
+    <p>The physics is 190 years old and unbeatable. We just made it wearable.</p>
+  </div>
+  <div class="mechanism">
+    <img src="img/mechanism.png" alt="Phone inside a woven metallic mesh, signal waves bouncing off">
+    <ol class="steps">
+      <li><b>Radio waves are electricity in the air.</b> Every call, every GPS ping, every LTE packet is an electric field looking for your phone's antenna.</li>
+      <li><b>A conductive mesh eats electric fields.</b> The lining in every Shield product is a fine silver-metal weave. Incoming waves flow around it, never through it.</li>
+      <li><b>What can't get in can't track you.</b> No signal reaches the device, so the device reports nothing: no location, no tower handshake, no data.</li>
+      <li><b>No battery, no app, no off-switch to forget.</b> The cage works because of what it is, not what it does. It cannot be updated, hacked, or turned off.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="carry">
+  <div class="section-head">
+    <h2>Carry.</h2>
+    <p>Eight bags and pouches. Each closes over the cage completely, because a Faraday cage with a gap is just a bag.</p>
+  </div>
+  <div class="grid">
+    <div class="product"><img src="img/holster.png" alt="Shield Holster"><h3>Shield Holster</h3><p>Belt-worn. Phone drawn in one move, sealed in one fold.</p><p class="price">€ 140</p></div>
+    <div class="product"><img src="img/sling.png" alt="Shield Sling"><h3>Shield Sling</h3><p>Crossbody, high on the chest. Keys, card, phone: dark.</p><p class="price">€ 180</p></div>
+    <div class="product"><img src="img/tote.png" alt="Shield Tote"><h3>Shield Tote</h3><p>The daily carry. One pocket inside swallows the phone whole.</p><p class="price">€ 220</p></div>
+    <div class="product"><img src="img/sleeve.png" alt="Shield Sleeve"><h3>Shield Sleeve</h3><p>For tablet and laptop. Meetings without an audience.</p><p class="price">€ 190</p></div>
+    <div class="product"><img src="img/backpack.png" alt="Shield Backpack"><h3>Shield Backpack</h3><p>Roll-top, 20 litres. One cage pocket, dead zone guaranteed.</p><p class="price">€ 340</p></div>
+    <div class="product"><img src="img/weekender.png" alt="Shield Weekender"><h3>Shield Weekender</h3><p>Cabin-sized duffel. Border crossings without a data trail.</p><p class="price">€ 390</p></div>
+    <div class="product"><img src="img/keyfob.png" alt="Shield Key Pouch"><h3>Shield Key Pouch</h3><p>Drops your car key off the air. Relay thieves get silence.</p><p class="price">€ 60</p></div>
+    <div class="product"><img src="img/wallet.png" alt="Shield Wallet"><h3>Shield Wallet</h3><p>Cards and cash. NFC, RFID and skimmers locked out.</p><p class="price">€ 95</p></div>
+  </div>
+</section>
+
+<section id="wear">
+  <div class="section-head">
+    <h2>Wear.</h2>
+    <p>Five garments with the cage sewn into pocket, hood and hem. You wear them like anything else; they work like nothing else.</p>
+  </div>
+  <div class="grid">
+    <div class="product"><img src="img/hoodie.png" alt="Shield Hoodie"><h3>Shield Hoodie</h3><p>Kangaroo pocket is a dead zone. Phone in, world out.</p><p class="price">€ 280</p></div>
+    <div class="product"><img src="img/parka.png" alt="Shield Parka"><h3>Shield Parka</h3><p>Deep caged pockets, storm-proof outside, signal-proof inside.</p><p class="price">€ 590</p></div>
+    <div class="product"><img src="img/cap.png" alt="Shield Cap"><h3>Shield Cap</h3><p>Six panels, one hidden pocket. The quiet cap.</p><p class="price">€ 110</p></div>
+    <div class="product"><img src="img/beanie.png" alt="Shield Beanie"><h3>Shield Beanie</h3><p>Knit outside, silver inside. Winter, untracked.</p><p class="price">€ 95</p></div>
+    <div class="product"><img src="img/scarf.png" alt="Shield Scarf"><h3>Shield Scarf</h3><p>Wraps the phone you forgot to switch off.</p><p class="price">€ 130</p></div>
+  </div>
+</section>
+
+<section id="space">
+  <div class="section-head">
+    <h2>Space.</h2>
+    <p>Eight pieces for home, office and travel. From a curtain that blacks out a window to a tent where a conversation stays a conversation.</p>
+  </div>
+  <div class="grid">
+    <div class="product"><img src="img/tent.png" alt="Shield Tent"><h3>Shield Tent</h3><p>Pop-up privacy room for two. Nothing in, nothing out.</p><p class="price">€ 1.900</p></div>
+    <div class="product"><img src="img/curtain.png" alt="Shield Curtain"><h3>Shield Curtain</h3><p>One panel, full length. The window stops listening.</p><p class="price">€ 260</p></div>
+    <div class="product"><img src="img/canopy.png" alt="Shield Canopy"><h3>Shield Canopy</h3><p>Crib canopy. The smallest sleeper, the quietest air.</p><p class="price">€ 240</p></div>
+    <div class="product"><img src="img/blanket.png" alt="Shield Blanket"><h3>Shield Blanket</h3><p>A throw for the sofa. Devices under it are gone.</p><p class="price">€ 170</p></div>
+    <div class="product"><img src="img/cone.png" alt="Shield Cone"><h3>Shield Cone</h3><p>Tabletop cone for meetings. Phones in, minds present.</p><p class="price">€ 150</p></div>
+    <div class="product"><img src="img/sleepbox.png" alt="Shield Sleep Box"><h3>Shield Sleep Box</h3><p>Bedside box. The phone sleeps before you do.</p><p class="price">€ 120</p></div>
+    <div class="product"><img src="img/keybox.png" alt="Shield Key Box"><h3>Shield Key Box</h3><p>Entryway box. Every key in the house, off the air.</p><p class="price">€ 99</p></div>
+    <div class="product"><img src="img/router.png" alt="Shield Router Cover"><h3>Shield Router Cover</h3><p>A cloche for the wifi. Night mode, enforced by physics.</p><p class="price">€ 80</p></div>
+  </div>
+</section>
+
+<section id="custom">
+  <div class="section-head">
+    <h2>Custom. We shield anything.</h2>
+    <p>The 21 pieces are the start. If it should be quiet inside, we build it: made to measure, sewn in Berlin, lined with certified shielding fabric.</p>
+  </div>
+  <div class="grid">
+    <div class="product"><img src="img/carcover.png" alt="Shield Car Cover"><h3>Car Cover</h3><p>Your car disappears from every network while it sleeps.</p><p class="price">from € 890</p></div>
+    <div class="product"><img src="img/studio.png" alt="Shield Studio"><h3>Studio &amp; Room Lining</h3><p>Recording studios, labs, meeting rooms. Walls that hold their breath.</p><p class="price">on request</p></div>
+    <div class="product"><img src="img/mechanism.png" alt="Research and health shielding"><h3>Research &amp; Health</h3><p>Measured attenuation for labs, clinics and anyone who needs certainty.</p><p class="price">on request</p></div>
+    <div class="product"><img src="img/curtain.png" alt="Custom sizes"><h3>Anything Else</h3><p>Curtains, covers, garments, enclosures. If you can describe it, we can shield it.</p><p class="price">on request</p></div>
+  </div>
+  <p style="margin-top:2.5rem"><a class="cta" href="mailto:hello@heisenbag.com">Describe what should be quiet</a></p>
+</section>
+
+<section id="why">
+  <div class="manifesto">
+    <h2>Everyone is reachable. Almost no one chooses when.</h2>
+    <p>Your phone talks to towers, satellites, beacons and apps around the clock. It does this <b>in your pocket, on your nightstand, in your meetings</b>. Airplane mode is a promise from the same companies that monetize your location. A Faraday cage is not a promise. It is physics.</p>
+    <p>Every Shield piece is lined with silver-plated polyamide fabric woven in Germany, attenuating 60 dB and more from 200 MHz to 14 GHz: 5G, LTE, GPS, wifi, Bluetooth, NFC. Journalists crossing borders, lawyers in negotiations, executives before earnings, parents teaching kids what attention feels like: they all need one moment where the device is simply <b>not there</b>. Heisenbag Shield makes that moment as easy as closing a bag, wearing a hoodie, or stepping into a tent.</p>
+    <p>Uncertainty, by design.</p>
+  </div>
+</section>
+
+<footer>
+  <div>HEISENBAG — Berlin</div>
+  <div>Shield collection, first drop soon.</div>
+</footer>
+
+</body>
+</html>
